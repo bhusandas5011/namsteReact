@@ -900,18 +900,14 @@ const restaurantList = [
 
 //concept Driven UI
 
-const RestaurantCard = ({
-    name,
-    cuisines,
-    cloudinaryImageId,
-    lastMileTravelString}) =>{
+const RestaurantCard = ({props}) =>{
     
     return(
         <div className="card">
-            <img src = {"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"+cloudinaryImageId} />
-            <h2>{name}</h2>
-            <h3>{cuisines.join(", ")}</h3>
-            <h4>{lastMileTravelString} minutes</h4>
+            <img src = {"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"+props.restaurant.data?.cloudinaryImageId} />
+            <h2>{restaurant.data?.name}</h2>
+            <h3>{restaurant.data?.cuisines.join(", ")}</h3>
+            <h4>{restaurant.data?.lastMileTravelString} minutes</h4>
         </div>
     )
 }
@@ -919,17 +915,14 @@ const RestaurantCard = ({
 const Body = () =>{
     return (
         <div className="restaurant-list">
-            {
-                restaurantList.map((restaurant) =>{
-                    return <RestaurantCard {...restaurant.data}/>;
-                }
-            )}
 
-            {/* <RestaurantCard {...restaurantList[0].data}/>
-            <RestaurantCard {...restaurantList[1].data}/>
-            <RestaurantCard {...restaurantList[2].data}/>
-            <RestaurantCard {...restaurantList[3].data}/>
-            <RestaurantCard {...restaurantList[5].data}/> */}
+            <RestaurantCard  restaurant = {restaurantList[0]}/>
+            <RestaurantCard  restaurant = {restaurantList[1]}/>
+            <RestaurantCard  restaurant = {restaurantList[2]}/>
+            <RestaurantCard  restaurant = {restaurantList[3]}/>
+            <RestaurantCard  restaurant = {restaurantList[4]}/>
+            <RestaurantCard  restaurant = {restaurantList[5]}/>
+            
         </div>
     );
 };
