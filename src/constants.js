@@ -1,58 +1,7 @@
-//FOOD APP
-/***Requirements 
- 
- * Header
-      - Logo 
-      - Nav Items(Right Side)
-      - Cart      
- *  Body
-      - Search Bar
-      - Restaurent List
-        - Restaurent Card
-           - Image
-           - Name 
-           - Rating
-           - Cusines
+//Named export
+export const IMG_CON_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
 
- *  Footer
-      - Links
-      -Copyrights
-
- 
- * ***/
-
-
-import React from "react";
-import ReactDOM,{createRoot}  from "react-dom/client";
-
-const Title = () => (
-  <a href="/">
-  <img
-  className="logo" 
-   alt="Food Items" 
-   src="https://www.pngkey.com/png/detail/428-4282931_uber-for-food-delivery-food-delivery.png"></img>
-   </a>
-);
-
-//Composing Components
-
-const Header = () => {
-    return (
-        <div className="header">
-            <Title/>
-        <div className="nav-items">
-            <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Contact</li>
-                <li>Cart</li>
-            </ul>
-            
-        </div>
-        </div>
-    );
-};
-const restaurantList = [
+export const restaurantList = [
     {
         "type": "restaurant",
         "data": {
@@ -897,55 +846,3 @@ const restaurantList = [
         },
         "subtype": "basic"
       },];
-
-//concept Driven UI
-
-const RestaurantCard = ({name,cuisines,lastMileTravelString,cloudinaryImageId}) =>{
-
-    return(
-        <div className="card">
-            <img src = {"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"+cloudinaryImageId} />
-            <h2>{name}</h2>
-            <h3>{cuisines.join(", ")}</h3>
-            <h4>{lastMileTravelString} minutes</h4>
-        </div>
-    )
-}
-
-const Body = () =>{
-    return (
-        <div className="restaurant-list">
-            {
-                restaurantList.map((restaurant) =>{
-                    return <RestaurantCard  {...restaurant.data} key= {restaurant.data.id}/>
-                })
-            }
-            
-        </div>
-    );
-};
-
-const Footer = () =>{
-    return (
-        <h1>Footer</h1>
-    );
-};
-
-
-const AppLayout = () =>{
-    return (
-        <React.Fragment>
-            <Header/>
-            <Body/>
-            <Footer />
-        </React.Fragment>
-    );
-};
-
-
-
-
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<AppLayout/> );
